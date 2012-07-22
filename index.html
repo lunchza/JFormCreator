@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="JFormCreator : A drag-and-drop GUI creator for Java, written in Java" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>JFormCreator</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lunchza/JFormCreator">View on GitHub</a>
+
+          <h1 id="project_title">JFormCreator</h1>
+          <h2 id="project_tagline">A drag-and-drop GUI creator for Java, written in Java</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/lunchza/JFormCreator/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/lunchza/JFormCreator/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>JFormCreator</h3>
+
+<p><img src="http://i.imgur.com/6RBpH.png" alt="image"></p>
+
+<hr><p>Download latest version <a href="https://github.com/downloads/lunchza/JFormCreator/JFormCreator%20v1.25b.jar">here</a></p>
+
+<p>Older versions can be found <a href="https://github.com/lunchza/JFormCreator/tree/master/JFormCreator/jar/archive">here</a></p>
+
+<hr><h1>Overview:</h1>
+
+<p><strong>JFormCreator</strong> is a program that I wrote during a week-long strike at my university in February 2012. I had actually intended to write something else but found myself getting flustered with Java's built-in layout managers so decided to write a GUI creator. Thus JGuiMaker was born (later renamed to JFormCreator). Since then, I have been adding small features and fixing many, many bugs. In retrospect, the program is actually fairly poorly written however since it was made for personal use a re-write is not justifiable. Regardless, I learned a lot embarking on (at the time) such an ambitious project. I didn't know if I'd be able to translate the idea I had into a fully working program when I started, and actually managed to surprise myself.</p>
+
+<h1>Feature List:</h1>
+
+<ul>
+<li>Drag-and-drop form/GUI creation</li>
+<li>Quickly create forms with labels, buttons, text fields and more</li>
+<li>Save form templates and load them later for editing</li>
+<li>Generate source code that creates your form, which you can then add functionality to</li>
+</ul><hr><h1>Changelog:</h1>
+
+<p>v1.25b</p>
+
+<p>-Application renamed to JFormCreator</p>
+
+<p>-Multiple selected components can no longer be moved out of bounds</p>
+
+<p>-Removed the check for upper-case Class names in generated source, since this isn't strictly enforced in java</p>
+
+<p>v1.2b</p>
+
+<p>-copy, cut and paste functions added to context menu</p>
+
+<p>-edit menu added, has the same functionality as the context menu</p>
+
+<p>-deleted components are now also moved far off-screen to prevent unwanted interaction w.r.t drag-select</p>
+
+<p>-copies of text fields now have borders</p>
+
+<p>v1.12b</p>
+
+<p>-fixed an oversight that resulted in check boxes being unselectable in drag-select</p>
+
+<p>-fixed certain components being unselectable in drag-mode on template load</p>
+
+<p>v1.1b</p>
+
+<p>-added a context menu to components</p>
+
+<p>-can now select multiple components by dragging the mouse on the main panel</p>
+
+<p>-Removed delete mode as it's easier to drag-select then click delete</p>
+
+<p>-fixed a graphical glitch that caused phantom rectangles to appear on screen</p>
+
+<p>v1.0b</p>
+
+<p>-beta release</p>
+
+<p>-fixed drag functionality</p>
+
+<p>-added the option to force event code generation</p>
+
+<p>-template version checking is now enforced</p>
+
+<p>-removed the cancel option from all confirmation dialogs</p>
+
+<p>-fixed a few typos</p>
+
+<p>-fixed the main panel being out of position when starting a new template after resizing it</p>
+
+<p>v0.95a</p>
+
+<p>-can no longer create components out of bounds</p>
+
+<p>-can no longer include apostrophe's or backslashes in component text</p>
+
+<p>-decreased maximum component size by 4 pixels to fix a bug</p>
+
+<p>-can no longer set component text such that the component is out of bounds</p>
+
+<p>-can no longer "lose" labels by setting their text to nothing</p>
+
+<p>v0.9a</p>
+
+<p>-can now no longer set the width/height of a component such that it falls outside the bounds of the main panel</p>
+
+<p>-new template now restores main panel to maximum size</p>
+
+<p>-added a crosshair to assist with component placement</p>
+
+<p>-minimum frame size of (100,100) enforced</p>
+
+<p>-fixed multiple issues involving the creation of null components</p>
+
+<p>-offset generated frame height by 30 pixels (unknown cause of original issue) *I now know that this is the height of the frame's title bar</p>
+
+<p>v0.81a</p>
+
+<p>-the main panel (virtual frame) is now resizable</p>
+
+<p>-components now scale with any change in the size of the main panel</p>
+
+<p>-program window resized to full-screen, and is no longer resizable by the user</p>
+
+<p>-fixed the incorrect calculation of the main panel's center point</p>
+
+<p>-fixed a bug involving null button creation</p>
+
+<p>-adjusted border on the utilities panel</p>
+
+<p>v0.75a</p>
+
+<p>-fixed an oversight where null labels were possible</p>
+
+<p>v0.74a</p>
+
+<p>-program window is now resizable</p>
+
+<p>-component text can now no longer contain quotation marks (preventing code injection)</p>
+
+<p>-fixed a bug where component text values persisted for text fields/areas</p>
+
+<p>-fixed an issue where check box text wouldn't update</p>
+
+<p>v0.7a</p>
+
+<p>-added support for combo boxes</p>
+
+<p>-added additional trace lines to help component positioning</p>
+
+<p>-text areas now have borders</p>
+
+<p>-fixed checkbox height being below minimum allowed component size</p>
+
+<p>-fixed an oversight where components loaded from templates weren't disabled</p>
+
+<p>-removed unneccessary import of event libraries when no event code is needed</p>
+
+<p>-generated frame now grabs focus on program launch</p>
+
+<p>-generated code now imports the java.awt library</p>
+
+<p>v0.62a</p>
+
+<p>-fixed two bugs that prevented the current template from being entirely discarded</p>
+
+<p>-fixed a bug where lower-case labels undercut the minimum component size</p>
+
+<p>v0.6a</p>
+
+<p>-support for check boxes added</p>
+
+<p>v0.5a</p>
+
+<p>-added "delete mode" which is activatable by clicking delete with no components selected</p>
+
+<p>-focus is now always transferred away from created components. This prevents typing in text boxes or text areas</p>
+
+<p>-fixed incorrect parameter checking on some confirmation dialogs</p>
+
+<p>-fixed a bug where deleted components weren't removed from the ArrayList</p>
+
+<p>-fixed a typo in a confirmation dialog</p>
+
+<p>-program now automatically determines if event handler code is needed in generated code</p>
+
+<p>v0.4a</p>
+
+<p>-added functionality for saving and loading templates, stored as .tmp files</p>
+
+<p>-significantly improved code readability</p>
+
+<p>-drawn rectangle when creating text field height changed from 20 to 25 (minimum component size)</p>
+
+<p>v0.3a</p>
+
+<p>-smoothed out component dragging by separating stages of x and y calculations</p>
+
+<p>-can no longer set component parameters out of bounds (resets to center)</p>
+
+<p>-label and text field initial height set to minimum component size</p>
+
+<p>-error message is now displayed when trying to add an actionListener to a component that doesn't support it</p>
+
+<p>-property fields now restore component parameters upon invalid input</p>
+
+<p>-deleted components now have their native screen resource destroyed</p>
+
+<p>v0.22a</p>
+
+<p>-generated frame is no longer resizable</p>
+
+<p>-resized generated frame to more closely match its virtual counterpart</p>
+
+<p>v0.2a</p>
+
+<p>-minimum size now enforced even when changing parameters using the properties panel</p>
+
+<p>-main frame is no longer resizable</p>
+
+<p>-flag for event code is now stored in the component name</p>
+
+<p>-can now only add ActionListeners to buttons</p>
+
+<p>-a message dialog is now shown on successful code generation</p>
+
+<p>v0.13a</p>
+
+<p>-minimum component size of (25, 25) enforced</p>
+
+<p>-unlabeled Labels now have a default text</p>
+
+<p>v0.1a</p>
+
+<p>-initial release</p>
+
+<p>-support for buttons, labels, text fields and text areas added</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">JFormCreator maintained by <a href="https://github.com/lunchza">lunchza</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
