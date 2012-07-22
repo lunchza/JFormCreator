@@ -1,0 +1,140 @@
+v1.25b
+-Application renamed to JFormCreator
+-Multiple selected components can no longer be moved out of bounds
+-Removed the check for upper-case Class names in generated source, since this isn't strictly enforced
+ in java
+
+v1.2b
+-copy, cut and paste functions added to context menu
+-edit menu added, has the same functionality as the context menu
+-deleted components are now also moved far off-screen to prevent unwanted interaction w.r.t drag-select
+-copies of text fields now have borders
+
+v1.12b
+-fixed an oversight that resulted in check boxes being unselectable in drag-select
+-fixed certain components being unselectable in drag-mode on template load
+
+v1.1b
+-added a context menu to components
+-can now select multiple components by dragging the mouse on the main panel
+-Removed delete mode as it's easier to drag-select then click delete
+-fixed a graphical glitch that caused phantom rectangles to appear on screen
+
+v1.0b
+-beta release
+-fixed drag functionality
+-added the option to force event code generation
+-template version checking is now enforced
+-removed the cancel option from all confirmation dialogs
+-fixed a few typos
+-fixed the main panel being out of position when starting a new template after resizing it
+
+v0.95a
+-can no longer create components out of bounds
+-can no longer include apostrophe's or backslashes in component text
+-decreased maximum component size by 4 pixels to fix a bug
+-can no longer set component text such that the component is out of bounds
+-can no longer "lose" labels by setting their text to nothing
+
+v0.9a
+-can now no longer set the width/height of a component such that it falls outside the bounds of
+ the main panel 
+-new template now restores main panel to maximum size
+-added a crosshair to assist with component placement
+-minimum frame size of (100,100) enforced
+-fixed multiple issues involving the creation of null components
+-offset generated frame height by 30 pixels (unknown cause of original issue)
+
+
+v0.81a
+-the main panel (virtual frame) is now resizable
+-components now scale with any change in the size of the main panel
+-program window resized to full-screen, and is no longer resizable by the user
+-fixed the incorrect calculation of the main panel's center point
+-fixed a bug involving null button creation
+-adjusted border on the utilities panel
+
+v0.75a
+-fixed an oversight where null labels were possible
+
+v0.74a
+-program window is now resizable
+-component text can now no longer contain quotation marks (preventing code injection)
+-fixed a bug where component text values persisted for text fields/areas
+-fixed an issue where check box text wouldn't update
+
+v0.7a
+-added support for combo boxes
+-added additional trace lines to help component positioning
+-text areas now have borders
+-fixed checkbox height being below minimum allowed component size
+-fixed an oversight where components loaded from templates weren't disabled
+-removed unneccessary import of event libraries when no event code is needed
+-generated frame now grabs focus on program launch
+-generated code now imports the java.awt library
+
+v0.62a
+-fixed two bugs that prevented the current template from being entirely discarded
+-fixed a bug where lower-case labels undercut the minimum component size
+
+v0.6a
+-support for check boxes added
+
+v0.5a
+-added "delete mode" which is activatable by clicking delete with no components selected
+-focus is now always transferred away from created components. This prevents typing in text boxes or text areas
+-fixed incorrect parameter checking on some confirmation dialogs
+-fixed a bug where deleted components weren't removed from the ArrayList
+-fixed a typo in a confirmation dialog
+-program now automatically determines if event handler code is needed in generated code
+
+v0.4a
+-added functionality for saving and loading templates, stored as .tmp files
+-significantly improved code readability
+-drawn rectangle when creating text field height changed from 20 to 25 (minimum component size)
+
+
+v0.3a
+-smoothed out component dragging by separating stages of x and y calculations
+-can no longer set component parameters out of bounds (resets to center)
+-label and text field initial height set to minimum component size
+-error message is now displayed when trying to add an actionListener to a component that doesn't support it
+-property fields now restore component parameters upon invalid input
+-deleted components now have their native screen resource destroyed
+
+v0.22a
+-generated frame is no longer resizable
+-resized generated frame to more closely match its virtual counterpart
+
+v0.2a
+-minimum size now enforced even when changing parameters using the properties panel
+-main frame is no longer resizable
+-flag for event code is now stored in the component name
+-can now only add ActionListeners to buttons
+-a message dialog is now shown on successful code generation
+
+v0.13a
+-minimum component size of (25, 25) enforced
+-unlabeled Labels now have a default text
+
+v0.1a
+-initial release
+-support for buttons, labels, text fields and text areas added
+
+
+
+TO DO:
+-create edit JMenu *DONE*
+-add cut function *DONE*
+-actionListener option must be copied with buttons (easy :)) *DONE*
+-draw trace lines for multiple component selection
+-change topmostcomponent to top-left corner of rectangle created by left-most and right-most components
+-add importable/exportable templates *DONE*
+-drag-delete capability *DONE*
+-include trace lines while dragging *DONE*
+-add error messages for out of date template files *DONE*
+-make text areas scrollable
+-options menu (show trace lines(*DONE*, statusBar orientation, always force event code *DONE*)
+-bound width/height *DONE*
+-fix drag functionality *DONE*
+-allow main frame to be resizable *REWORKED, DONE*
