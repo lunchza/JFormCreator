@@ -1,3 +1,8 @@
+v1.3b
+-Added keyboard shortcuts for common operations
+-Components now deselect when clicking/dragging
+-Toggling trace lines now resets program status
+
 v1.25b
 -Application renamed to JFormCreator
 -Multiple selected components can no longer be moved out of bounds

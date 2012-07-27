@@ -378,6 +378,12 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 		
 		mainPanel.setComponentPopupMenu(contextMenu);
 		
+		/**
+		 * Establish key dispatcher
+		 */
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.addKeyEventDispatcher(new MyDispatcher());
+		
 		//Initial repaint is key for initialisation of certain variables
 		mainPanel.repaint();
 		
@@ -939,7 +945,7 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 			else
 				drawTraceLines = true;
 			
-			mainPanel.repaint();
+			resetStatus();
 		}
 		
 		/*
@@ -1109,7 +1115,7 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 					
 					components.add(comp);
 				}
-							
+								
 				//Ensures that pasted components are selected after paste
 				if (selectedComponents.size() == 1)
 				{
@@ -1202,8 +1208,11 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 	}
 
 	public void mousePressed(MouseEvent m) {
-		if (currentStatus == NORMAL_STATUS && m.getSource() == mainPanel && m.getButton() == MouseEvent.BUTTON1)
+		if ((currentStatus == NORMAL_STATUS || currentStatus == COMPONENT_SELECTED_STATUS || currentStatus == MULTIPLE_COMPONENTS_SELECTED_STATUS)&& m.getSource() == mainPanel && m.getButton() == MouseEvent.BUTTON1)
+		{
+			resetStatus();
 			currentStatus = DRAG_MODE_STATUS;
+		}
 		
 		/*
 		 * When the mouse is pressed with the intention of dragging, the initial coordinates
@@ -1510,38 +1519,6 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 				 initialClickedComponentX = m2.getX();
 				 initialClickedComponentY = m2.getY();
 				 }
-				 /*//TODO: find out why this isn't working!
-				 if (selectedComponent != m2.getComponent())
-					{
-						if(currentStatus != DELETE_MODE_STATUS)
-						{
-						selectedComponent = m2.getComponent();
-						setStatus("Component selected. Click and drag to reposition");
-						currentStatus = COMPONENT_SELECTED_STATUS;
-						setPropertiesFields();
-						xField.setEditable(true);
-						yField.setEditable(true);
-						widthField.setEditable(true);
-						heightField.setEditable(true);
-						actionListenerBox.setEnabled(true);
-						updateButton.setEnabled(true);
-						
-						if (m2.getComponent() instanceof JButton)
-						{
-						textField.setEditable(true);
-						textField.setEnabled(true);
-						textField.setText(((JButton) m2.getComponent()).getText());
-						}
-						
-						if (m2.getComponent() instanceof JLabel)
-						{
-						textField.setEditable(true);
-						textField.setEnabled(true);
-						textField.setText(((JLabel) m2.getComponent()).getText());
-						}
-						}
-					}
-					*/
 			}
 
 			public void mouseReleased(MouseEvent m2) {
@@ -1935,6 +1912,65 @@ public class JFormCreator extends JFrame implements ActionListener, MouseListene
 	
 		if (k.getKeyChar() == KeyEvent.VK_ENTER)
 			actionPerformed(new ActionEvent(updateButton, 1, null));	
+	}
+	
+	/**
+	 * Keyboard shortcuts are handled by this KeyEventDispatcher. Key presses are handled this way so that
+	 * they are globally captured
+	 */
+	private class MyDispatcher implements KeyEventDispatcher {
+		public boolean dispatchKeyEvent(KeyEvent e) {
+			if (e.getID() == KeyEvent.KEY_PRESSED) {
+				switch(e.getKeyCode())
+				{
+					case KeyEvent.VK_DELETE: //delete key
+					{
+						actionPerformed(new ActionEvent(deleteButton, 1, null));	
+						break;
+					}
+
+					case KeyEvent.VK_C: //ctrl-c for copying
+					{
+						if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
+						{
+							actionPerformed(new ActionEvent(copy_context, 1, null));
+						}
+						break;
+					}
+					
+					case KeyEvent.VK_X: //ctrl-x for cutting
+					{
+						if ((e.getKeyCode() == KeyEvent.VK_X) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
+						{
+							actionPerformed(new ActionEvent(cut_context, 1, null));
+						}
+						break;
+					}
+					
+					case KeyEvent.VK_V: //ctrl-v for copying
+					{
+						if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
+						{
+							actionPerformed(new ActionEvent(paste_context, 1, null));
+						}
+						break;
+					}
+					
+					case KeyEvent.VK_ESCAPE: //Pressing esc resets program status
+					{
+						resetStatus();
+						break;
+					}
+					
+					case KeyEvent.VK_F1: //Pressing F1 starts a new template
+					{
+						actionPerformed(new ActionEvent(newMenuItem, 1, null));
+						break;
+					}
+				}
+			}
+			return false;
+		}
 	}
 
 	/**
